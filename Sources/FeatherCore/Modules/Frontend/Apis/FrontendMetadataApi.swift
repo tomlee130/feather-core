@@ -30,7 +30,7 @@ struct FrontendMetadataApi: FeatherApiRepresentable {
               excerpt: model.excerpt,
               imageKey: model.imageKey,
               date: model.date,
-              status: .init(rawValue: model.status.rawValue)!,
+              status: .init(rawValue: model.status.rawValue) ?? .draft,
               feedItem: model.feedItem,
               canonicalUrl: model.canonicalUrl,
               filters: model.filters,
@@ -48,7 +48,7 @@ struct FrontendMetadataApi: FeatherApiRepresentable {
               excerpt: model.excerpt,
               imageKey: model.imageKey,
               date: model.date,
-              status: .init(rawValue: model.status.rawValue)!,
+              status: .init(rawValue: model.status.rawValue) ?? .draft,
               feedItem: model.feedItem,
               canonicalUrl: model.canonicalUrl,
               filters: model.filters,
@@ -66,7 +66,7 @@ struct FrontendMetadataApi: FeatherApiRepresentable {
         model.excerpt = input.excerpt
         model.imageKey = input.imageKey
         model.date = input.date
-        model.status = .init(rawValue: input.status.rawValue)!
+        model.status = .init(rawValue: input.status.rawValue) ?? .draft
         model.feedItem = input.feedItem
         model.canonicalUrl = input.canonicalUrl
         model.css = input.css
@@ -81,7 +81,7 @@ struct FrontendMetadataApi: FeatherApiRepresentable {
         model.imageKey = input.imageKey ?? model.imageKey
         model.date = input.date ?? model.date
         if let status = input.status?.rawValue {
-            model.status = .init(rawValue: status) ?? model.status
+            model.status = Metadata.Status(rawValue: status) ?? model.status
         }
         model.feedItem = input.feedItem ?? model.feedItem
         model.canonicalUrl = input.canonicalUrl ?? model.canonicalUrl

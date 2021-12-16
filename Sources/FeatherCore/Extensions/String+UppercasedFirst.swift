@@ -16,9 +16,9 @@ extension String {
         guard count > 1 else {
             return uppercased()
         }
-        let startIndex = index(startIndex, offsetBy: 1)
-        let begin = self[..<startIndex]
-        let end = self[startIndex...]
+        let startIdx = index(startIndex, offsetBy: 1)
+        let begin = self[..<startIdx]
+        let end = self[startIdx...]
         let first = begin.uppercased()
         return first + end
     }
